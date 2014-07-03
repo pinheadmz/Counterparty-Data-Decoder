@@ -43,8 +43,7 @@ databytes = binascii.unhexlify(bytes(data, 'utf-8'))
 # get data length and pop off that byte
 dLength = databytes[0]
 dChunk = databytes[1: dLength + 1]
-print(dLength, '\n', len(databytes), '\n', len(dChunk))
-exit()
+
 # get protocol prefix and pop that off
 dPrefix = dChunk[:len(PREFIX)]
 dChunk = dChunk[len(PREFIX):]
@@ -62,9 +61,9 @@ for i, v in enumerate(txUnpacked):
 	txDetails[txFormat['details'][i]] = v
 
 # output
-print('length: ', dLength)
-print('prefix: ', dPrefix)
-print('TX type: ', dType)
+print('Length Byte: ', dLength)
+print('Prefix Bytes: ', dPrefix)
+print('TX type Byte: ', dType)
 for key in txDetails:
 	if key == 'asset_id':
 		val = base26decode(txDetails[key])
